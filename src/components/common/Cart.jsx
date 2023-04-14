@@ -27,26 +27,30 @@ const Cart = ({ isVisible }) => {
       }
     >
       <aside className="absolute right-0 h-full bg-slate-50 w-2/5 lg:w-1/4 p-3">
-        <h2 className="text-center mb-5">Cart</h2>
-        <div className="mt-5">
+        <h2 className="text-center text-2xl font-bold mb-5">Cart</h2>
+        <div className="mt-2 max-h-96 overflow-y-auto">
           {cart.loading ?? <p>Loading cart products...</p>}
-          {!cart.loading && !cart.products.length && <p>Your cart is empty</p>}
+          {!cart.loading && !cart.products.length && (
+            <p className="text-center">Your cart is empty</p>
+          )}
           {!cart.loading && cart.products.length && (
-            <ul>
+            <ul className="divide-y divide-gray-300">
               {cart.products.map((product) => (
-                <li key={product.id}>
+                <li key={product.id} className="py-3">
                   <CartProduct product={product} />
                 </li>
               ))}
             </ul>
           )}
         </div>
-        <section>
-          <p className="mt-3 flex-row justify-between">
-            <span>Total:</span>${total}
-          </p>
+        <section className="mt-10">
+          <div className="flex justify-between mb-3">
+            <p className="text-lg">Total:</p>
+            <p className="text-lg font-bold">${total}</p>
+          </div>
           <button
             disabled={!cart.products.length}
+            className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md disabled:bg-gray-400 disabled:cursor-not-allowed"
             onClick={() => dispatch(buyCart(token))}
           >
             Buy Products

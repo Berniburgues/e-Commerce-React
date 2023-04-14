@@ -34,8 +34,11 @@ const ProductDetail = () => {
     <>
       {!product ? <p>Loading product...</p> : <ProductInfo product={product} />}
       <aside>
-        <h2>Discover similar items</h2>
-        <ul className="grid grid-cols-3">
+        <hr className="w-full border-gray-300 my-5" />
+        <h2 className="text-center font-semibold text-gray-400 text-lg">
+          Discover similar items
+        </h2>
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
           {relatedProducts.map((product) => (
             <li key={product.id}>
               <ProductCard product={product} />

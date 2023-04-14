@@ -61,13 +61,11 @@ export const updateQuantityProductCart =
     dispatch(loadCartProducts(token));
   };
 
-export const buyCart =
-  ({ token }) =>
-  async (dispatch) => {
-    dispatch(setCartLoading(true));
-    await createPurchase(token);
+export const buyCart = (token) => async (dispatch) => {
+  dispatch(setCartLoading(true));
+  await createPurchase(token);
 
-    dispatch(loadCartProducts(token));
-  };
+  dispatch(loadCartProducts(token));
+};
 
 export default cartSlice.reducer;

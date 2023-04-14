@@ -1,12 +1,13 @@
 import { axiosInstance } from '../api/axiosInstance';
 
-export const createPurchase = async (token) => {
+export const getPurchases = async ({ token }) => {
   try {
-    await axiosInstance.post('/purchases', undefined, {
+    const res = await axiosInstance('/purchases', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+    return res.data;
   } catch (error) {
     console.error(error);
   }
