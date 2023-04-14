@@ -1,25 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { getPurchases } from '../services/getPurchases';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadPurchases } from '../store/slices/purchases.slice';
 
 const Purchases = () => {
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.user.token);
-  const [purchases, setPurchases] = useState([]);
+  const purchases = useSelector((state) => state.purchases.purchases);
+  const loading = useSelector((state) => state.purchases.loading);
 
   useEffect(() => {
-    const fetchPurchases = async () => {
-      const data = await getPurchases({ token });
-      setPurchases(data);
-    };
-    fetchPurchases();
-  }, [token]);
+    dispatch(loadPurchases(token));
+  }, [dispatch, token]);
 
   return (
     <div>
-      <h1>Purchases</h1>
-      {purchases.map((purchase) => (
-        <ul key={purchase.id} purchase={purchase} />
-      ))}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          <h1>Purchases</h1>
+          <ul>
+            {purchases.map((purchase) => (
+              <li key={purchase.id}>
+                {purchase.products.map((product) => (
+                  <div key={product.id}>
+                    <p>{product.title}</p>
+                    <p>${product.price}</p>
+                  </div>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
