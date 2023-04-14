@@ -12,7 +12,7 @@ const Login = () => {
         <h2>Welcome! Enter your email and password to continue</h2>
         <div className="bg-blue-100 p-2 rounded-md my-2">
           <h3 className="text-center font-bold mb-1">Test Data</h3>
-          <p>burguesbernardo@gmail.com</p>
+          <p>bernardo.b@gmail.com</p>
           <p>bernardo1234</p>
         </div>
         <LoginForm />

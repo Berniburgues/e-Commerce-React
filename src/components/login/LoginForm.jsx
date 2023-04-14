@@ -21,13 +21,13 @@ const LoginForm = () => {
   const login = async () => {
     const loginData = await loginService(loginForm);
     const userData = {
-      id: loginData.data.user.id,
-      firstName: loginData.data.user.firstName,
-      lastName: loginData.data.user.lastName,
-      email: loginData.data.user.email,
+      id: loginData.user.id,
+      firstName: loginData.user.firstName,
+      lastName: loginData.user.lastName,
+      email: loginData.user.email,
     };
 
-    const token = loginData.data.token;
+    const token = loginData.token;
 
     dispatch(updateUserData(userData));
     dispatch(updateToken(token));
