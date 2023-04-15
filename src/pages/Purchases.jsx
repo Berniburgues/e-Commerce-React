@@ -1,39 +1,45 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { loadPurchases } from '../store/slices/purchases.slice';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getPurchases } from '../services/getPurchases';
 
 const Purchases = () => {
-  const dispatch = useDispatch();
   const token = useSelector((state) => state.user.token);
-  const purchases = useSelector((state) => state.purchases.purchases);
-  const loading = useSelector((state) => state.purchases.loading);
+  const [purchases, setPurchases] = useState([]);
 
   useEffect(() => {
-    dispatch(loadPurchases(token));
-  }, [dispatch, token]);
+    const loadPurchases = async () => {
+      const purchases = await getPurchases(token);
+      setPurchases(purchases);
+    };
+    loadPurchases();
+  }, []);
 
   return (
-    <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          <h1>Purchases</h1>
-          <ul>
-            {purchases.map((purchase) => (
-              <li key={purchase.id}>
-                {purchase.products.map((product) => (
-                  <div key={product.id}>
-                    <p>{product.title}</p>
-                    <p>${product.price}</p>
-                  </div>
-                ))}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+    <section>
+      <h2>Purchases</h2>
+      <ul>
+        {purchases.map((purchase) => (
+          <li key={purchase.id}>
+            <div className="flex justify-between items-center border-b-2 pb-2">
+              <div>
+                <img
+                  src={purchase.product.images[0].url}
+                  alt={purchase.product.title}
+                  className=" w-24 h-24 object-contain rounded"
+                />
+              </div>
+              <div className="ml-4 text-center">
+                <h3 className="text-lg">{purchase.product.title}</h3>
+                <p className="text-gray-500">{purchase.product.brand}</p>
+              </div>
+              <div className="flex-shrink-0">
+                <p className="text-lg font-medium">${purchase.product.price}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 

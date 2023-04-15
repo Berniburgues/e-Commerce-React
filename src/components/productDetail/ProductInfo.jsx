@@ -63,21 +63,21 @@ const ProductInfo = ({ product }) => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center w-full md:w-1/2 gap-8">
-        <section className="w-full">
-          <p className="text-gray-400">{product.brand}</p>
-          <h1 className="text-2xl text-black font-semibold mb-2">{product?.title}</h1>
-          <p className="mb-1">{product.description}</p>
+      <div className="flex flex-col justify-between w-full md:w-1/2">
+        <section>
+          <p className="text-gray-400 mb-2">{product.brand}</p>
+          <h1 className="text-2xl text-black font-semibold mb-4">{product?.title}</h1>
+          <p className="mb-4">{product.description}</p>
         </section>
 
-        <section className="flex flex-row items-center justify-center gap-32 flex-wrap">
+        <section className="flex flex-row items-center justify-around">
           <div className="text-center">
-            <h2 className="font-semibold text-gray-400">Price</h2>
+            <h2 className="font-semibold text-gray-400 mb-2">Price</h2>
             <p className="text-lg">${product.price}</p>
           </div>
 
           <div className="text-center">
-            <h2 className="font-semibold text-gray-400">Quantity</h2>
+            <h2 className="font-semibold text-gray-400 mb-2">Quantity</h2>
             <div className="flex flex-row items-center">
               <button
                 className="px-3 py-1 bg-gray-200 border border-gray-300 rounded-l-md"
@@ -97,7 +97,7 @@ const ProductInfo = ({ product }) => {
         </section>
 
         <button
-          className="mt-4 py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-md"
+          className="py-2 px-4 bg-green-500 hover:bg-green-600 text-white rounded-md"
           disabled={cart.loading}
           onClick={handleAddCart}
         >

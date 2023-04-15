@@ -1,8 +1,8 @@
 import { axiosInstance } from '../api/axiosInstance';
 
-export const getPurchases = async ({ token }) => {
+export const getPurchases = async (token) => {
   try {
-    const res = await axiosInstance('/purchases', {
+    const res = await axiosInstance.get('/purchases', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

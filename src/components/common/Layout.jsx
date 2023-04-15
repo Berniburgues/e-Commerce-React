@@ -42,7 +42,7 @@ const Layout = () => {
             <li>
               <button className="text-white font-medium hover:text-gray-400">
                 <Link to="/">
-                  <i className="bx bx-home" />
+                  <i className="bx bx-home mr-1" />
                   Home
                 </Link>
               </button>

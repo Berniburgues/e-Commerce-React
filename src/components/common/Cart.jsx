@@ -22,18 +22,15 @@ const Cart = ({ isVisible }) => {
   return (
     <section
       className={
-        'fixed inset-0 top-20 bg-[rgba(0,0,0,0.45)] transition-transform duration-500 backdrop-blur-sm ' +
+        'fixed inset-0 top-20 bg-[rgba(0,0,0,0.45)] transition-transform duration-500 backdrop-blur-sm  ' +
         toogleTransform
       }
     >
-      <aside className="absolute right-0 h-full bg-slate-50 w-2/5 lg:w-1/4 p-3">
+      <aside className="absolute right-0 h-full bg-slate-50 w-2/5 lg:w-1/4 p-3border-t-gray-300 border-t border-l">
         <h2 className="text-center text-2xl font-bold mb-5">Cart</h2>
         <div className="mt-2 max-h-96 overflow-y-auto">
           {cart.loading ?? <p>Loading cart products...</p>}
-          {!cart.loading && !cart.products.length && (
-            <p className="text-center">Your cart is empty</p>
-          )}
-          {!cart.loading && cart.products.length && (
+          {cart.products.length > 0 && (
             <ul className="divide-y divide-gray-300">
               {cart.products.map((product) => (
                 <li key={product.id} className="py-3">
@@ -43,6 +40,7 @@ const Cart = ({ isVisible }) => {
             </ul>
           )}
         </div>
+
         <section className="mt-10">
           <div className="flex justify-between mb-3">
             <p className="text-lg">Total:</p>
