@@ -10,7 +10,7 @@ const Cart = ({ isVisible }) => {
   const cart = useSelector((state) => state.cart);
   const toogleTransform = isVisible ? 'translate-x-0' : 'translate-x-full';
 
-  const total = cart.products.reduce(
+  const total = cart.product?.reduce(
     (sum, product) => sum + product.quantity * Number(product.price),
     0,
   );
@@ -30,9 +30,9 @@ const Cart = ({ isVisible }) => {
         <h2 className="text-center text-2xl font-bold mb-5">Cart</h2>
         <div className="mt-2 max-h-96 overflow-y-auto">
           {cart.loading ?? <p>Loading cart products...</p>}
-          {cart.products.length > 0 && (
+          {cart.product.length > 0 && (
             <ul className="divide-y divide-gray-300">
-              {cart.products.map((product) => (
+              {cart.product.map((product) => (
                 <li key={product.id} className="py-3">
                   <CartProduct product={product} />
                 </li>
@@ -47,7 +47,7 @@ const Cart = ({ isVisible }) => {
             <p className="text-lg font-bold">${total}</p>
           </div>
           <button
-            disabled={!cart.products.length}
+            disabled={!cart.product?.length}
             className="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md disabled:bg-gray-400 disabled:cursor-not-allowed"
             onClick={() => dispatch(buyCart(token))}
           >

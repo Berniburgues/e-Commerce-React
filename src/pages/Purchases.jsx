@@ -18,12 +18,12 @@ const Purchases = () => {
     <section>
       <h2>Purchases</h2>
       <ul>
-        {purchases.map((purchase) => (
+        {purchases?.map((purchase) => (
           <li key={purchase.id}>
             <div className="flex justify-between items-center border-b-2 pb-2">
               <div>
                 <img
-                  src={purchase.product.images[0].url}
+                  src={purchase.product.productImgs[0].url}
                   alt={purchase.product.title}
                   className=" w-24 h-24 object-contain rounded"
                 />

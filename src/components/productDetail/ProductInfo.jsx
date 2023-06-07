@@ -10,9 +10,9 @@ const ProductInfo = ({ product }) => {
   const { isLogged, token } = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
   const [counter, setCounter] = useState(1);
-  const [selectedImg, setSelectedImg] = useState(product.images[0]);
+  const [selectedImg, setSelectedImg] = useState(product.productImgs[0]);
 
-  const cartProduct = cart.products.find((x) => x.id === product.id);
+  const cartProduct = cart.product.find((x) => x.id === product.id);
 
   const lessOne = () => {
     const newCounter = counter - 1;
@@ -49,7 +49,7 @@ const ProductInfo = ({ product }) => {
           alt="Product"
         />
         <div className="flex flex-row flex-wrap justify-center">
-          {product.images.map((img) => (
+          {product.productImgs.map((img) => (
             <img
               key={img.id}
               className={`w-24 h-24 mb-4 mx-2 cursor-pointer border border-gray-300 ${

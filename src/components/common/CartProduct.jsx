@@ -31,7 +31,7 @@ const CartProduct = ({ product }) => {
       <div className="flex flex-row w-full items-center justify-between">
         <div className="w-1/3 mr-2">
           <img
-            src={product.images[0].url}
+            src={product.productImgs[0].url}
             alt={product.title}
             className="w-full h-auto"
           />

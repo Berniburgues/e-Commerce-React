@@ -6,7 +6,7 @@ import { updateQuantityCart } from '../../services/updateQuantityCart';
 import { createPurchase } from '../../services/createPurchase';
 
 const initialState = {
-  products: [],
+  product: [],
   loading: false,
 };
 
@@ -15,7 +15,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     setCartProducts(state, action) {
-      state.products = action.payload;
+      state.product = action.payload;
     },
 
     setCartLoading(state, action) {

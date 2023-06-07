@@ -52,7 +52,7 @@ const Home = () => {
                     className={`p-2 md:p-2 text-md font-semibold md:text-base text-center rounded-full cursor-pointer overflow-hidden max-w-xs ${
                       categoryValue?.id === category.id
                         ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 text-gray-800'
+                        : 'bg-gray-200 text-gray-800 hover:bg-gray-400'
                     }`}
                   >
                     {category.name === 'Smart TV' ? 'TV' : category.name}

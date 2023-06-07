@@ -33,7 +33,7 @@ const ProductDetail = () => {
   return (
     <>
       {!product ? <p>Loading product...</p> : <ProductInfo product={product} />}
-      <aside>
+      <section>
         <hr className="w-full border-gray-300 my-5" />
         <h2 className="text-center font-semibold text-gray-400 text-lg">
           Discover similar items
@@ -45,7 +45,7 @@ const ProductDetail = () => {
             </li>
           ))}
         </ul>
-      </aside>
+      </section>
     </>
   );
 };

@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   const { isLogged, token } = useSelector((state) => state.user);
   const cart = useSelector((state) => state.cart);
 
-  const isProductInCart = cart.products.some(
+  const isProductInCart = cart.product.some(
     (cartProduct) => cartProduct.id === product.id,
   );
 
@@ -28,7 +28,7 @@ const ProductCard = ({ product }) => {
     >
       <div className="h-52 w-full flex justify-center items-center">
         <img
-          src={product.images[0].url}
+          src={product.productImgs[0].url}
           alt={product.title}
           className="h-48 w-full object-contain mt-4"
         />

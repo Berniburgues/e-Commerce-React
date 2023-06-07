@@ -7,6 +7,7 @@ export const getPurchases = async (token) => {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(res.data);
     return res.data;
   } catch (error) {
     console.error(error);
